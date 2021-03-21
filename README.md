@@ -38,7 +38,7 @@ and understood intuitive pattern.
 `Lambda.V1E`, `Lambda.V2E`, `Lambda.R1E`, `Lambda.R2E` are used plenty in examples below.
 
 * [`momomo.com.platform.Return`](https://github.com/momomo/momomo.com.platform.Return)  
-A intuitive library that allows you to return multiple return values with defined types on the fly from any method rather than being limited to the default maximum of one.
+An intuitive library that allows you to return multiple return values with defined types on the fly from any method rather than being limited to the default maximum of one.
 
 * [`momomo.com.platform.Nanotime`](https://github.com/momomo/momomo.com.platform.Nanotime)  
 Allows for nanosecond time resolution when asking for time from Java Runtime in contrast with `System.currentTimeMillis()`.
