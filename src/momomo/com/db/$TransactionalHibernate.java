@@ -1,13 +1,13 @@
 package momomo.com.db;
 
 import momomo.com.annotations.informative.Protected;
-import momomo.com.db.sessionfactory.$SessionFactoryNewAndRequire;
+import momomo.com.db.sessionfactory.$SessionFactoryNewRequireHibernate;
 import org.hibernate.Session;
 
 /**
  * @author Joseph S.
  */
-public interface $TransactionalHibernate extends $Transactional<$TransactionHibernate, $TransactionOptionsHibernate>, $SessionFactoryNewAndRequire {
+public interface $TransactionalHibernate extends $Transactional<$TransactionHibernate, $TransactionOptionsHibernate>, $SessionFactoryNewRequireHibernate {
 
     default $TransactionManagerHibernate transactionManager() {
         return transactionManager(session());
@@ -24,5 +24,4 @@ public interface $TransactionalHibernate extends $Transactional<$TransactionHibe
     @Protected @Override default $TransactionOptionsHibernate options() {
         return new $TransactionOptionsHibernate(this);
     }
-
 }

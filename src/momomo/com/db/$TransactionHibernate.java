@@ -11,7 +11,9 @@ public class $TransactionHibernate extends $Transaction<$TransactionHibernate> {
     protected final $TransactionManagerHibernate manager;
     protected final Transaction                  delegate;
 
-    protected $TransactionHibernate($TransactionManagerHibernate manager, Transaction transaction) {
+    protected $TransactionHibernate(Transaction transaction, boolean isNew, $TransactionManagerHibernate manager) {
+        super( isNew ? null : Boolean.FALSE );
+        
         this.manager  = manager;
         this.delegate = transaction;
     }
@@ -25,5 +27,4 @@ public class $TransactionHibernate extends $Transaction<$TransactionHibernate> {
     protected void $rollback$() {
         manager.rollback(this);
     }
-
 }

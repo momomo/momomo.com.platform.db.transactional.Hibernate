@@ -8,7 +8,6 @@ import org.hibernate.Transaction;
 import java.sql.Connection;
 
 public final class $TransactionManagerHibernate implements $TransactionManager<$TransactionHibernate, $TransactionOptionsHibernate> {
-
     protected final Session delegate;
 
     public $TransactionManagerHibernate(Session delegate) {
@@ -29,10 +28,6 @@ public final class $TransactionManagerHibernate implements $TransactionManager<$
         return delegate.getTransaction();
     }
     
-    public boolean hasActiveTransaction() {
-        return delegate.isJoinedToTransaction();
-    }
-    
     public void withConnection(Lambda.V1E<Connection, ?> lambda) {
         delegate.doWork(connection -> {
             try {
@@ -43,5 +38,9 @@ public final class $TransactionManagerHibernate implements $TransactionManager<$
         });
     }
     
-    
+    public Boolean isReadOnly() {
+        return delegate.doReturningWork(c -> {
+            return c.isReadOnly();
+        });
+    }
 }
