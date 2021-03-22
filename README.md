@@ -61,7 +61,9 @@ We finally released [`momomo.com.platform.Lambda`](https://github.com/momomo/mom
 
 Sure we could have switched our lambdas to `Supplier`, `Consumer` and so forth, *whatever those names mean*, but to destroy our code just to make our code 100% Java organic?   Not a great idea. 
 
-It is just a bunch of interface classes after all contained in one **file**, *nothing expensive* for you to add on.         
+It is just a bunch of interface classes after all contained in one **file**, *nothing expensive* for you to add on.
+
+---         
 
 #### On Spring
 
@@ -104,6 +106,8 @@ A `static void main` can startup in less than a `half a second` within your edit
 
 Sure, you use `Spring Boot`, it runs in a `static void main` you say! Yes, but it starts a `server` to give you access and everything has to run through that. Not easy.  
 
+---
+
 #### On Hibernate
 Now, using Hibernate as is, is good, however, not much flavour gets added. Spring actually adds a some neccessary functionality, and their better transaction / session manager.   
 Hibernates `transaction manager` / `sessionfactory` is not great. Their `thread` implementation severely lacking. But we fixed its shortcomings.  
@@ -127,37 +131,41 @@ We have our own tweaked implementations, with long descriptive names
    Uses Hibernates own `ThreadLocalSessionContext` which is insane on many levels. Comments are within the class but we baically just override `ThreadLocalSessionContext` to 
    prevent the wrapping of the `Session` upon a call to `currrentSesssion()` which for some reason returns a proxied, wraooebd and limited `dumb proof` `Session` which is seriously lacking on so many levels.
 
-#### What is this then?
+---
 
-It is an easy to use, transactional API, that sets up, and delegates to existing implementations (in the case of `Spring`), and adds a bit of additional flavour to match the Spring implementation when it comes to `Hibernate`. 
-It is fully customizable, overridable, flexible, optionable, and all the other able thing the world has to offer. 
+#### On *this*, what does *this* do?
 
-Simply put, it is very capable!    
+It is an easy to use, **annotation free**, **transactional API**, that offers a vast amount of methods to **create**, or **reuse** transactions by either delegating to existing implementations in the case of `Spring` or add a bit of additional flavour in the case of `Hibernate` only version to match `Spring`'s transaction capabilities. 
 
-What we've done is written a base [`momomo.com.platform.db.transactional`](https://github.com/momomo/momomo.com.platform.db.transactional) which is then currently implemented with two flavors
+It is a fully customizable, flexible, overridable, optionable and all the other **able** thing the world has to offer. Simply put, it is very capable.    
+
+What we've done is written a base [`momomo.com.platform.db.transactional`](https://github.com/momomo/momomo.com.platform.db.transactional) which is then *currently* implemented with two flavors
   
    1. [`momomo.com.platform.db.transactional.Spring`](https://github.com/momomo/momomo.com.platform.db.transactional.Spring) For those currently stuck or happy with Spring.      
-   It uses Springs `PlatformTransactionManager` as the tool to perform your transactions using **our API** which basically setups the 
+   It makes use of Springs `PlatformTransactionManager` as the tool to perform your transactions using **our API** which basically setups the 
    transaction and then delegates it to Spring to make the transaction work as you intended. 
    &nbsp;  
-   This works great and have been **tested extensively** as this library came before we switched to **Hibernate only** library to get off the injection trail.
+   This works great and have been **tested extensively** as this library came before we switched to our now **Hibernate only** library to get off the injection, beans and annotation trail.
    
    2. [`momomo.com.platform.db.transactional.Hibernate`](https://github.com/momomo/momomo.com.platform.db.transactional.Hibernate)  
-      For those that do not want to use Spring and our camp and **recommendation to all new adopters**.  
+      Our camp and our **recommendation to all new adopters**, and for those that do not want to use `Spring`.    
       
-      We broke loose from Spring setting up our `EntityManagerFactory` which in reality just wraps a Hibernate `SessionFactory` as well as broke loose 
-      from relying on `SpringPlatformTransactionManager` and basically wrote our own transaction manager *(not that difficult)* the required parts using `Hibernate` session transaction mechanisms.
+      We broke loose from Spring setting up our `EntityManagerFactory` which in reality just wraps a Hibernate `SessionFactory` as well as broke loose from relying on `SpringPlatformTransactionManager` 
+      by basically writing our own transaction manager *(not that difficult)* using `Hibernate` `Session` transaction mechanisms. 
       
-  3. Coming soon and already in a somewhat acceptable condition is the JDBC only transactional API. It already provides similar mechanisms, but is not fully developed as the other two.  
-     See [momomo.com.db.$DatabaseTransactional](https://github.com/momomo/momomo.com.platform.db.base/tree/master/src/momomo/com/db/$DatabaseTransactional.java)
+  3. ***Coming soon*** and already in a somewhat acceptable condition is the JDBC only transactional API. It already provides similar mechanisms, but is not fully developed as the other two.  
+     See [momomo.com.db.$DatabaseTransactional](https://github.com/momomo/momomo.com.platform.db.base/tree/master/src/momomo/com/db/$DatabaseTransactional.java) for the current state of the JDBC version.  
+     It is not a tit for tat implementation, but gives us a limited transactional API, that is similar.        
 
 What we get is a unified `Transactional` **API** that can be setup and invoked from anyplace, and you could one day even switch from `Spring` to `Hibernate` and retain your functionality.
 
-#### Is that all? 
-Well, no. We also provide a bunch of other things, such as the simplicy of setting up your hibernate `SessionFactory`, as well as `Migrations` (think *liquibase*, *flyway*), as well as a bunch of 
-session related utility related to entities. 
+---
 
-All of this can execute from a `static void main`. No XML. **Zero complexity**.
+#### Is that all? 
+Not at all. We also provide a bunch of other things, such as the simplicy of setting up your hibernate `SessionFactory`, as well as `Migrations` (think *liquibase*, *flyway*), as well as a bunch of 
+session related utility related to entities, persisting, finding, saving, building and more.  
+
+All of this can execute from a **`static void main`**. **No XML**. **Zero complexity**.
 
 
 .................. WE ARE STILL WRITING THIS DOCUMENTAION .................... NOT COMPLETE!
