@@ -156,6 +156,9 @@ session related utility related to entities.
 
 All of this can execute from a `static void main`. No XML. **Zero complexity**.
 
+
+.................. WE ARE STILL WRITING THIS DOCUMENTAION .................... NOT COMPLETE!
+
 ### Getting started
 
 The best way we can show case things, is simply to show you the code, which is fully functional, and which you can download, navigate and/or run immediately yourself.
