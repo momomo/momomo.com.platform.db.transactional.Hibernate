@@ -48,6 +48,8 @@ A library to execute database command in transactions without having to use anno
 
 ### Background
 
+#### On [Lambda](https://github.com/momomo/momomo.com.platform.Lambda)
+
 What makes this possible or even a reality is the existence of [`momomo.com.platform.Lambda`](https://github.com/momomo/momomo.com.platform.Lambda) which we've now had in our posession for over 10 years.  
 There is nothing magical about it, yet something similar is lacking in presence in the Java world.    
    
