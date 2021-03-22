@@ -48,8 +48,9 @@ A library to execute database command in transactions without having to use anno
 
 ### Background
 
-First understand that what makes this possible or even a reality is the existence of [`momomo.com.platform.Lambda`](https://github.com/momomo/momomo.com.platform.Lambda) which we've now had in our posession for over 10 years.  
-There is nothing magical about it, yet something similar is lacking in presence in the Java world.   
+What makes this possible or even a reality is the existence of [`momomo.com.platform.Lambda`](https://github.com/momomo/momomo.com.platform.Lambda) which we've now had in our posession for over 10 years.  
+There is nothing magical about it, yet something similar is lacking in presence in the Java world.  
+   
 Similar libraries might have recently made the scene but not quite as powerful nor as intuitive, we think. 
 
 We finally released [`momomo.com.platform.Lambda`](https://github.com/momomo/momomo.com.platform.Lambda) to *actually* be able to release [`momomo.com.platform.db.transactional.Hibernate`](https://github.com/momomo/momomo.com.platform.db.transactional.Hibernate) and [`momomo.com.platform.db.transactional.Spring`](https://github.com/momomo/momomo.com.platform.db.transactional.Spring). 
@@ -118,9 +119,9 @@ These repetions leads to redundancy, which leads potential errors and mistakes.
 Futher, we repeat, `thread` or actually `org.hibernate.context.internal.ThreadLocalSessionContext` implementation is deeply, deeply flawed. 
 We have our own tweaked implementations, with long descriptive names  
    * [ThreadLocalSessionContextRecommended](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigThreadLocalSessionContextRecommended.java)         
-   * [ThreadLocalSessionContextCrazySane](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigThreadLocalSessionContextCrazySane.java)         
-   * [ThreadLocalSessionContextCrazyLaxed](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigThreadLocalSessionContextCrazyLaxed.java)         
-   * [ThreadLocalSessionContextCrazyInsane](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigThreadLocalSessionContextCrazyInsane.java)  
+   * [ThreadLocalSessionContextCrazySane](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigThreadLocalSessionContextUnwrappedTrackedSingleCrazySane.java)         
+   * [ThreadLocalSessionContextCrazyLaxed](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigThreadLocalSessionContextUnwrappedTrackedSingleCrazyLaxed.java)         
+   * [ThreadLocalSessionContextCrazyInsane](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigThreadLocalSessionContextUnwrappedTrackedSingleCrazyInsane.java)  
    Uses Hibernates own `ThreadLocalSessionContext` which is insane on many levels. Comments are within the class but we baically just override `ThreadLocalSessionContext` to 
    prevent the wrapping of the `Session` upon a call to `currrentSesssion()` which for some reason returns a proxied, wraooebd and limited `dumb proof` `Session` which is seriously lacking on so many levels.
 
