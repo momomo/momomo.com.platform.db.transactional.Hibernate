@@ -1,4 +1,4 @@
-<!---
+<!----
 -->
 
 ## momomo.com.platform.db.transactional.Hibernate
@@ -63,7 +63,7 @@ Sure we could have switched our lambdas to `Supplier`, `Consumer` and so forth, 
 
 It is just a bunch of interface classes after all contained in one **file**, *nothing expensive* for you to add on.
 
----         
+----         
 
 #### On Spring
 
@@ -106,7 +106,7 @@ A `static void main` can startup in less than a `half a second` within your edit
 
 Sure, you use `Spring Boot`, it runs in a `static void main` you say! Yes, but it starts a `server` to give you access and everything has to run through that. Not easy.  
 
----
+----
 
 #### On Hibernate
 Now, using Hibernate as is, is good, however, not much flavour gets added. Spring actually adds a some neccessary functionality, and their better transaction / session manager.   
@@ -131,7 +131,7 @@ We have our own tweaked implementations, with long descriptive names
    Uses Hibernates own `ThreadLocalSessionContext` which is insane on many levels. Comments are within the class but we baically just override `ThreadLocalSessionContext` to 
    prevent the wrapping of the `Session` upon a call to `currrentSesssion()` which for some reason returns a proxied, wraooebd and limited `dumb proof` `Session` which is seriously lacking on so many levels.
 
----
+----
 
 #### On *this*, what does *this* do?
 
@@ -159,7 +159,7 @@ What we've done is written a base [`momomo.com.platform.db.transactional`](https
 
 What we get is a unified `Transactional` **API** that can be setup and invoked from anyplace, and you could one day even switch from `Spring` to `Hibernate` and retain your functionality.
 
----
+----
 
 #### Is that all? 
 Not at all. We also provide a bunch of other things, such as the simplicy of setting up your hibernate `SessionFactory`, as well as `Migrations` (think *liquibase*, *flyway*), as well as a bunch of 
@@ -168,7 +168,18 @@ session related utility related to entities, persisting, finding, saving, buildi
 All of this can execute from a **`static void main`**. **No XML**. **Zero complexity**.
 
 
-.................. WE ARE STILL WRITING THIS DOCUMENTAION .................... NOT COMPLETE!
+----
+
+#### WE ARE STILL WRITING THIS DOCUMENTAION, IT IS NOT COMPLETE! COMING SOON.  
+
+As of now, we recommend you to visit our Crypto example application which details almost all of it. We just have to include it here as well soon.
+
+#### [`CLICK HERE TO VISIT CRYPTO EXAMPLE APP WITH MOST OF THE DOCUMENTAION IN IT`](https://github.com/momomo/momomo.com.example.app.Crypto)
+
+---- 
+
+
+
 
 ### Getting started
 
