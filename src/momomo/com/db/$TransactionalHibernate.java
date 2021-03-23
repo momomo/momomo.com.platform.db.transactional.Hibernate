@@ -8,8 +8,8 @@ import org.hibernate.Session;
  * @author Joseph S.
  */
 public interface $TransactionalHibernate extends $Transactional<$TransactionHibernate, $TransactionOptionsHibernate>, $SessionFactoryNewRequireHibernate {
-
-    default $TransactionManagerHibernate transactionManager() {
+    
+    @Protected default $TransactionManagerHibernate transactionManager() {
         return transactionManager(session());
     }
 

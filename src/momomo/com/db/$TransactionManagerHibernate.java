@@ -24,7 +24,7 @@ public final class $TransactionManagerHibernate implements $TransactionManager<$
         transaction.delegate.rollback();
     }
 
-    public Transaction getTransaction() {
+    public Transaction transaction() {
         return delegate.getTransaction();
     }
     

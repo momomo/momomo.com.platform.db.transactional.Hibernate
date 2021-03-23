@@ -46,7 +46,7 @@ public class $TransactionOptionsHibernate extends $TransactionOptions<$Transacti
      */
     protected $TransactionHibernate create(Propagation propagation) {
         $TransactionManagerHibernate manager     = outer.transactionManager(NEW.equals(propagation));
-        Transaction                  transaction = manager.getTransaction();
+        Transaction                  transaction = manager.transaction();
         boolean                      isNew       = !transaction.isActive();
         
         if ( isNew ) {
