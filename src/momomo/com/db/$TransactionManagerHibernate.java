@@ -8,10 +8,17 @@ import org.hibernate.Transaction;
 import java.sql.Connection;
 
 public final class $TransactionManagerHibernate implements $TransactionManager<$TransactionHibernate, $TransactionOptionsHibernate> {
-    protected final Session delegate;
+    public final Session delegate;
 
     public $TransactionManagerHibernate(Session delegate) {
         this.delegate = delegate;
+    }
+    
+    /**
+     * To grant access to the underlying session should there be a need
+     */
+    public Session delegate() {
+        return delegate;
     }
 
     @Override
@@ -24,7 +31,7 @@ public final class $TransactionManagerHibernate implements $TransactionManager<$
         transaction.delegate.rollback();
     }
 
-    public Transaction transaction() {
+    protected Transaction transaction() {
         return delegate.getTransaction();
     }
     

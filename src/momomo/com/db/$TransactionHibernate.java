@@ -8,23 +8,27 @@ import org.hibernate.Transaction;
  * @author Joseph S. 
  */
 public class $TransactionHibernate extends $Transaction<$TransactionHibernate> {
-    protected final $TransactionManagerHibernate manager;
-    protected final Transaction                  delegate;
+    public final $TransactionManagerHibernate manager;
+    public final Transaction                  delegate;
 
-    protected $TransactionHibernate(Transaction transaction, boolean isNew, $TransactionManagerHibernate manager) {
-        super( isNew ? null : Boolean.FALSE );
+    protected $TransactionHibernate($TransactionManagerHibernate outer, Transaction delegate, boolean isNew) {
+        super(outer, isNew ? null : Boolean.FALSE );
         
-        this.manager  = manager;
-        this.delegate = transaction;
+        this.manager  = outer;
+        this.delegate = delegate;
     }
-
-    @Override
-    protected void $commit$() {
-        manager.commit(this);
+    
+    /**
+     * To grant access to the underlying transaction should there be a need
+     */
+    public Transaction delegate() {
+        return delegate;
     }
-
-    @Override
-    protected void $rollback$() {
-        manager.rollback(this);
+    
+    /**
+     * To grant access to our 'transaction manager' from a transaction if there is ever a need
+     */
+    public $TransactionManagerHibernate manager() {
+        return manager;
     }
 }

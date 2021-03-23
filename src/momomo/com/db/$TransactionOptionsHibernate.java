@@ -91,7 +91,7 @@ public class $TransactionOptionsHibernate extends $TransactionOptions<$Transacti
             transaction.begin();
         }
         
-        return new $TransactionHibernate(transaction, isNew, manager);
+        return new $TransactionHibernate(manager, transaction, isNew);
     }
     
     private void test($TransactionManagerHibernate manager) {
