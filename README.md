@@ -1,8 +1,6 @@
 <!----
 -->
 
-## momomo.com.platform.db.transactional.Hibernate
-
 ###### A library to execute database command in transactions without having to use annotations based on Hibernate libraries. No Spring! 
 
 ##### Dependencies 
