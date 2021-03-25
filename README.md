@@ -1,7 +1,7 @@
 <!----
 -->
 
-###### A library to execute database command in transactions without having to use annotations based on Hibernate libraries. No Spring! 
+##### A library to execute database command in transactions without having to use annotations based on Hibernate libraries. No Spring! 
 
 ##### Dependencies 
 * [`momomo.com.platform.Core`](https://github.com/momomo/momomo.com.platform.Core) 
