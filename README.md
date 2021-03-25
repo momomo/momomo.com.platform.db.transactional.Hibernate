@@ -167,7 +167,6 @@ session related utility related to entities, persisting, finding, saving, buildi
 
 All of this can execute from a **`static void main`**. **Zero** xml. **Zero** complexity. 
 
-
 ----
 
 #### WE ARE STILL WRITING THIS DOCUMENTAION, IT IS NOT COMPLETE! COMING SOON.  
