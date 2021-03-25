@@ -25,7 +25,9 @@
     <id>maven-central</id>
     <url>http://repo1.maven.org/maven2</url>
 </repository>
-```
+```        
+
+
 
 ##### Our other repositories
 
@@ -45,6 +47,8 @@ Allows for nanosecond time resolution when asking for time from Java Runtime in 
 
 * [`momomo.com.platform.db.transactional.Hibernate`](https://github.com/momomo/momomo.com.platform.db.transactional.Hibernate)  
 A library to execute database command in transactions without having to use annotations based on Hibernate libraries. No Spring!
+
+---
 
 ### Background
 
