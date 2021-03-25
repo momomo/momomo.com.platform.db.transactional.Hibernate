@@ -133,7 +133,7 @@ We have our own tweaked implementations, with long descriptive names
 
 ----
 
-#### On *this*, what does *this* do?
+#### On *this* library, what does it do?
 
 It is an easy to use, **annotation free**, **transactional API**, that offers a vast amount of methods to **create**, or **reuse** transactions by either delegating to existing implementations in the case of `Spring` or add a bit of additional flavour in the case of `Hibernate` only version to match `Spring`'s transaction capabilities. 
 
