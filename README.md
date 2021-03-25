@@ -74,7 +74,7 @@ We did too, and frequently run into several very common issues.
 To get the *transactional features* using *Spring annotations* the code needs to be:
    
    &nbsp; a. Placed into a method of its own. So code has to be extracted and pollute the outer class scope.   
-   &nbsp; &nbsp; &nbsp; Further, the method will have to declare a bunch of parameters for you to pass whatever you needed in the previous scope.   
+   &nbsp; &nbsp; &nbsp; Further, the method will have to declare a bunch of parametnanoers for you to pass whatever you needed in the previous scope.   
    &nbsp; &nbsp; &nbsp; Parameter and method pollution. Not great.  
    &nbsp;        
    &nbsp; b. The method has to be `public` and so can not be `protected` or `private` when that might be the appropiate choice.   
