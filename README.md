@@ -165,7 +165,7 @@ What we get is a unified `Transactional` **API** that can be setup and invoked f
 Not at all. We also provide a bunch of other things, such as the simplicy of setting up your hibernate `SessionFactory`, as well as `Migrations` (think *liquibase*, *flyway*), as well as a bunch of 
 session related utility related to entities, persisting, finding, saving, building and more.  
 
-All of this can execute from a **`static void main`**. **No XML**. **Zero complexity**.
+All of this can execute from a **`static void main`**. **Zero** xml. **Zero** complexity. 
 
 
 ----
