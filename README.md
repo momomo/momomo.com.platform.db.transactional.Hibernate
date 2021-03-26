@@ -49,19 +49,17 @@ There is nothing magical about it, yet something similar is lacking in presence 
    
 Similar libraries might have recently made the scene but not quite as powerful nor as intuitive, we think. 
 
-We finally released [`momomo.com.platform.Lambda`](https://github.com/momomo/momomo.com.platform.Lambda) to *actually* be able to release [`momomo.com.platform.db.transactional.Hibernate`](https://github.com/momomo/momomo.com.platform.db.transactional.Hibernate) and [`momomo.com.platform.db.transactional.Spring`](https://github.com/momomo/momomo.com.platform.db.transactional.Spring). 
+We finally released **[`momomo.com.platform.Lambda`](https://github.com/momomo/momomo.com.platform.Lambda)** to *actually* be able to release **[`momomo.com.platform.db.transactional.Hibernate`](https://github.com/momomo/momomo.com.platform.db.transactional.Hibernate)** and **[`momomo.com.platform.db.transactional.Spring`](https://github.com/momomo/momomo.com.platform.db.transactional.Spring)**. 
 
-[`momomo.com.platform.Lambda`](https://github.com/momomo/momomo.com.platform.Lambda) is the most used and important library internally and is the essence and most important factor of what this library does. 
+**[`momomo.com.platform.Lambda`](https://github.com/momomo/momomo.com.platform.Lambda)** is the most used and important library internally and is the essence and most important factor of what this library does. 
 
 Sure we could have switched our lambdas to `Supplier`, `Consumer` and so forth, *whatever those names mean*, but to destroy our code just to make our code 100% Java organic?   Not a great idea. 
 
 It is just a bunch of interface classes after all contained in one **file**, *nothing expensive* for you to add on.
 
-----         
-
 #### On Spring
 
-Most of the industry today relies on the use of Spring `@Transactional(propagation = Propagation.REQUIRES_NEW)` and `@Transactional(propagation = Propagation.REQUIRES)` `@Transactional(propagation = Propagation.SUPPORTS)`.  
+Most of the industry today relies on the use of Spring **`@Transactional(propagation = Propagation.REQUIRES_NEW)`** and **`@Transactional(propagation = Propagation.REQUIRES)`** **`@Transactional(propagation = Propagation.SUPPORTS)`**.  
 
 We did too, and frequently run into several very common issues. 
  
@@ -100,8 +98,6 @@ A `static void main` can startup in less than a `half a second` within your edit
 
 Sure, you use `Spring Boot`, it runs in a `static void main` you say! Yes, but it starts a `server` to give you access and everything has to run through that. Not easy.  
 
-----
-
 #### On Hibernate
 Now, using Hibernate as is, is good, however, not much flavour gets added. Spring actually adds a some neccessary functionality, and their better transaction / session manager.   
 Hibernates `transaction manager` / `sessionfactory` is not great. Their `thread` implementation severely lacking. But we fixed its shortcomings.  
@@ -124,8 +120,6 @@ We have our own tweaked implementations, with long descriptive names
    * [ThreadLocalSessionContextCrazyInsane](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigThreadLocalSessionContextUnwrappedTrackedSingleCrazyInsane.java)  
    Uses Hibernates own `ThreadLocalSessionContext` which is insane on many levels. Comments are within the class but we baically just override `ThreadLocalSessionContext` to 
    prevent the wrapping of the `Session` upon a call to `currrentSesssion()` which for some reason returns a proxied, wraooebd and limited `dumb proof` `Session` which is seriously lacking on so many levels.
-
-----
 
 #### On *this* library, what does it do?
 
@@ -153,8 +147,6 @@ What we've done is written a base [`momomo.com.platform.db.transactional`](https
 
 What we get is a unified `Transactional` **API** that can be setup and invoked from anyplace, and you could one day even switch from `Spring` to `Hibernate` and retain your functionality.
 
-----
-
 #### Is that all? 
 Not at all. We also provide a bunch of other things, such as the simplicy of setting up your hibernate `SessionFactory`, as well as `Migrations` (think *liquibase*, *flyway*), as well as a bunch of 
 session related utility related to entities, persisting, finding, saving, building and more.  
@@ -168,11 +160,6 @@ All of this can execute from a **`static void main`**. **Zero** xml. **Zero** co
 As of now, we recommend you to visit our Crypto example application which details almost all of it. We just have to include it here as well soon.
 
 #### [`CLICK HERE TO VISIT CRYPTO EXAMPLE APP WITH MOST OF THE DOCUMENTAION IN IT`](https://github.com/momomo/momomo.com.example.app.Crypto)
-
----- 
-
-
-
 
 ### Getting started
 
