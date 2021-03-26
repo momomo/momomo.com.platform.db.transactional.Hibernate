@@ -117,8 +117,11 @@ We have our own tweaked implementations, with long descriptive names
    * **[`$SessionConfigContextListRecommended`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextListRecommended.java)**         
    * **[`$SessionConfigContextSingleCrazySane`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextSingleCrazySane.java)**         
    * **[`$SessionConfigContextSingleCrazyLaxed`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextSingleCrazyLaxed.java)**         
-   * **[`$SessionConfigContextSingleCrazyInsane`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextSingleCrazyInsane.java)** This uses Hibernates own **`ThreadLocalSessionContext`** which is insane on many levels. Comments are within the class but we basicaly just override **`ThreadLocalSessionContext`** to 
-   prevent the wrapping of the **`Session`** upon a call to **`currrentSesssion()`** which for some reason returns a proxied, wrapped and limited ***dumb proof** **`Session`** which is lacking on so many levels.
+   * **[`$SessionConfigContextSingleCrazyInsane`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextSingleCrazyInsane.java)** 
+   * **[`$SessionConfigContextUntrackedLeastRecommended`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextUntrackedLeastRecommended.java)** This uses Hibernates own **`ThreadLocalSessionContext`** where we basicaly just override **`ThreadLocalSessionContext`** to prevent the wrapping of the **`Session`** upon a call to **`currrentSesssion()`** which for some reason returns a proxied, wrapped and limited ***dumb proof** **`Session`** which is lacking on so many levels.    
+    &nbsp;   
+   This does not track `openSession()` calls however! The first four do! 
+   
 
 #### On *this* library
 
