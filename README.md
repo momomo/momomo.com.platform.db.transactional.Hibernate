@@ -104,7 +104,7 @@ Now, using Hibernate as is, is good, however, not much flavour gets added. Sprin
 Hibernates **`transaction manager`** / **`sessionfactory`** is not great. Their **`thread`** implementation severely lacking. But we fixed its shortcomings.  
     
 But most people do not even know how to setup Hibernate without Spring. Without **`XML`**. It is not an easy topic to find info about. 
-See our **[$SessionConfig.java](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfig.java)** implementation for that.   
+See our **[`$SessionConfig.java`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfig.java)** implementation for that.   
 It is not all that easy, nor is it easy to google anything on Hibernate and not get a Spring answer today. 
  
 > Remember the Javascript answers on **`StackOverflow.com`** not long ago? They used to be all **`jQuery`** related.   
