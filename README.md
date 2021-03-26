@@ -114,13 +114,17 @@ Creating transactions using Hibernate is possible but requires **programmatic in
 Futher, we repeat the hiberante option **`thread`** or actually **`org.hibernate.context.internal.ThreadLocalSessionContext`** implementation is very simplictic in nature and severely limited in terms of capacity.
  
 We have our own tweaked implementations, with long descriptive names  
-   * **[`$SessionConfigContextListRecommended`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextListRecommended.java)**         
-   * **[`$SessionConfigContextSingleCrazySane`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextSingleCrazySane.java)**         
-   * **[`$SessionConfigContextSingleCrazyLaxed`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextSingleCrazyLaxed.java)**         
-   * **[`$SessionConfigContextSingleCrazyInsane`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextSingleCrazyInsane.java)** 
+   * **[`$SessionConfigContextListRecommended`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextListRecommended.java)** Prevents wrapping of **`openSession()`** calls as well as tracks them from **[`momomo.com.db.$SessionFactory`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/sessionFactory/$SessionFactory.java)** by adding the **`new session`** on top of a stack. When the **`new session`** completes, we remove it and the one previously on top becomes the one to be used for **`currentSession()`** / `requireSession()`** calls.
+   
+   * **[`$SessionConfigContextSingleCrazyInsane`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextSingleCrazyInsane.java)** Prevents wrapping of **`openSession()`** calls as well as tracks them from **[`momomo.com.db.$SessionFactory`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/sessionFactory/$SessionFactory.java)** by terminating / rolling back any previously attached `session()` and eating away any exception possibly thrown as a result, logging it only instead of throwing the exception. 
+   
+   * **[`$SessionConfigContextSingleCrazySane`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextSingleCrazySane.java)** Prevents wrapping of **`openSession()`** calls as well as tracks them from **[`momomo.com.db.$SessionFactory`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/sessionFactory/$SessionFactory.java)** by terminating / rolling back any previously attached `session()` by rolling it back yet throwing any exception that might arise rather than eating it.  
+              
+   * **[`$SessionConfigContextSingleCrazyLaxed`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextSingleCrazyLaxed.java)** Prevents wrapping of **`openSession()`** calls as well as tracks them from **[`momomo.com.db.$SessionFactory`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/sessionFactory/$SessionFactory.java)** by detaching previously tracked **`session`** silently, not terminating them but allowing them to continue to live, in hopes that the developer takes responsibility of manually terminating them instead.
+      
    * **[`$SessionConfigContextUntrackedLeastRecommended`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextUntrackedLeastRecommended.java)** This uses Hibernates own **`ThreadLocalSessionContext`** where we basicaly just override **`ThreadLocalSessionContext`** to prevent the wrapping of the **`Session`** upon a call to **`currrentSesssion()`** which for some reason returns a proxied, wrapped and limited ***dumb proof** **`Session`** which is lacking on so many levels.    
     &nbsp;   
-   This does not track `openSession()` calls however! The first four do! 
+   This **does not** track **`openSession()`** calls however! The first four do! 
    
 
 #### On *this* library
