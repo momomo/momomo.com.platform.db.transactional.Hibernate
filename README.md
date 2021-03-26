@@ -122,10 +122,7 @@ We have our own tweaked implementations, with long descriptive names
               
    * **[`$SessionConfigContextSingleCrazyLaxed`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextSingleCrazyLaxed.java)** Prevents wrapping of **`openSession()`** calls as well as tracks them from **[`momomo.com.db.$SessionFactory`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/sessionFactory/$SessionFactory.java)** by detaching previously tracked **`session`** silently, not terminating them but allowing them to continue to live, in hopes that the developer takes responsibility of manually terminating them instead.
       
-   * **[`$SessionConfigContextUntrackedLeastRecommended`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextUntrackedLeastRecommended.java)** This uses Hibernates own **`ThreadLocalSessionContext`** where we basicaly just override **`ThreadLocalSessionContext`** to prevent the wrapping of the **`Session`** upon a call to **`currrentSesssion()`** which for some reason returns a proxied, wrapped and limited ***dumb proof** **`Session`** which is lacking on so many levels.    
-    &nbsp;   
-   This **does not** track **`openSession()`** calls however! The first four do! 
-   
+   * **[`$SessionConfigContextUntrackedLeastRecommended`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextUntrackedLeastRecommended.java)** Prevents wrapping of **`openSession()`** calls but does not track **`openSession()`** calls like the other ones do because it uses Hibernates own **`ThreadLocalSessionContext`** where we basicaly just override **`ThreadLocalSessionContext`** to prevent the wrapping of the **`Session`** upon a call to **`currentSesssion()`** which for some reason by default returns a proxied, wrapped and limited **dumb proof** **`Session`** that's lacking on so many levels.    
 
 #### On *this* library
 
