@@ -40,8 +40,6 @@ An intuitive library that allows you to return multiple return values with defin
 * **[`momomo.com.platform.Nanotime`](https://github.com/momomo/momomo.com.platform.Nanotime)**  
 Allows for nanosecond time resolution when asking for time from Java Runtime in contrast with `System.currentTimeMillis()`.
 
----
-
 ### Background
 
 #### On [Lambda](https://github.com/momomo/momomo.com.platform.Lambda)
