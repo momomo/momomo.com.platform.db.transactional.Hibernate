@@ -116,7 +116,7 @@ Creating transactions using Hibernate is possible but requires **programmatic in
 
 These repetions leads to redundancy, which leads potential errors and mistakes. 
 
-Futher, we repeat, `thread` or actually `org.hibernate.context.internal.ThreadLocalSessionContext` implementation is deeply, deeply flawed. 
+Futher, we repeat, `thread` or actually `org.hibernate.context.internal.ThreadLocalSessionContext` implementation is very simplictic and therefore flawed. 
 We have our own tweaked implementations, with long descriptive names  
    * [ThreadLocalSessionContextRecommended](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigThreadLocalSessionContextRecommended.java)         
    * [ThreadLocalSessionContextCrazySane](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigThreadLocalSessionContextUnwrappedTrackedSingleCrazySane.java)         
