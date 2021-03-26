@@ -114,10 +114,10 @@ Creating transactions using Hibernate is possible but requires **programmatic in
 Futher, we repeat the hiberante option **`thread`** or actually **`org.hibernate.context.internal.ThreadLocalSessionContext`** implementation is very simplictic in nature and severely limited in terms of capacity.
  
 We have our own tweaked implementations, with long descriptive names  
-   * **[`ThreadLocalSessionContextRecommended`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigThreadLocalSessionContextRecommended.java)**         
-   * **[`ThreadLocalSessionContextCrazySane`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigThreadLocalSessionContextUnwrappedTrackedSingleCrazySane.java)**         
-   * **[`ThreadLocalSessionContextCrazyLaxed`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigThreadLocalSessionContextUnwrappedTrackedSingleCrazyLaxed.java)**         
-   * **[`ThreadLocalSessionContextCrazyInsane`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigThreadLocalSessionContextUnwrappedTrackedSingleCrazyInsane.java)**  
+   * **[`$SessionConfigContextListRecommended`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextListRecommended.java)**         
+   * **[`$SessionConfigContextSingleCrazySane`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextSingleCrazySane.java)**         
+   * **[`$SessionConfigContextSingleCrazyLaxed`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextSingleCrazyLaxed.java)**         
+   * **[`$SessionConfigContextSingleCrazyInsane`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextUnwrappedTrackedSingleCrazyInsane.java)**  
    Uses Hibernates own **`ThreadLocalSessionContext`** which is insane on many levels. Comments are within the class but we baically just override **`ThreadLocalSessionContext`** to 
    prevent the wrapping of the **`Session`** upon a call to **`currrentSesssion()`** which for some reason returns a proxied, wraooebd and limited ***dumb proof** **`Session`** which is seriously lacking on so many levels.
 
