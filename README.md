@@ -126,7 +126,7 @@ We have our own tweaked implementations, with long descriptive names
      
    Basically it will behave almost identical to **[`$SessionConfigContextSingleCrazyInsane`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextSingleCrazyInsane.java)** but here we ensure that the implementation used is Hibernates own but with two difference. 1) We only override their method to prevent wrapping. 2) **[`$SessionConfigContextSingleCrazyInsane`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfigContextSingleCrazyInsane.java)** is tracked from **[`momomo.com.db.$SessionFactory`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/sessionFactory/$SessionFactory.java)**. This one is not.    
 
-#### On *this* library
+#### On this library
 
 It is an easy to use, **annotation free**, **`Transactional API`**, that offers a vast amount of methods to **create**, or **reuse** transactions by either delegating to existing implementations in the case of **`Spring`** or add a bit of additional flavour in the case of **`Hibernate`** only version to match **`Spring's`** transaction capabilities. 
 
@@ -160,17 +160,224 @@ All of this can execute from a **`static void main`**. **Zero** xml. **Zero** co
 
 ----
 
-#### WE ARE STILL WRITING THIS DOCUMENTAION, IT IS NOT COMPLETE! COMING SOON.  
-
-As of now, we recommend you to visit our Crypto example application which details almost all of it. We just have to include it here as well soon.
-
-#### [`CLICK HERE TO VISIT CRYPTO EXAMPLE APP WITH MOST OF THE DOCUMENTAION IN IT`](https://github.com/momomo/momomo.com.example.app.Crypto)
-
 ### Getting started
 
-The best way we can show case things, is simply to show you the code, which is fully functional, and which you can download, navigate and/or run immediately yourself.
+The best way we can showcase things, is simply to show you the code that is fully functional and which you can download, navigate and/or run immediately yourself from our example application by visiting our **[`momomo.com.example.app.Crypto`](https://github.com/momomo/momomo.com.example.app.Crypto)** which details almost all of it, and can be checked out and includes a fully working and executable `static void main` where we setup database entities as well as demonstrate other parts of our database related libraries and their usage.  
 
-The code for the application can be found in this repository, but below we've **included the readme** of that repository.    
+Relevant extracts from the **[`momomo.com.example.app.Crypto`](https://github.com/momomo/momomo.com.example.app.Crypto)**
+
+
+```java
+// We demand a new transaction                                                                   
+
+Crypto.repository.newTransaction(() -> {
+    return super.save(entity); 
+});
+```
+
+```java
+// We demand the continuation of a transaction if there is one, or starting a new one if there is none
+                                      
+Crypto.repository.requireTransaction(() -> {
+    return super.save(entity);
+});                              
+```    
+
+```java                                                                                               
+// A read only transaction if there is not an existing one already in which case we requireTransaction basically
+ 
+List<Polkadot> = Crypto.repository.supportTransaction(() -> {
+    return super.list(); 
+});   
+```
+
+```java
+// We can disable auto commit so we commit when we want or not at all
+
+Crypto.repository.requireTransaction(tx -> {
+    tx.autocommit(false);
+
+    super.save(entity);
+
+    tx.commit();
+});
+```                                               
+
+```java
+// Another way to disable automatic commit
+
+Crypto.repository.requireTransaction(() -> {
+    super.save(entity);
+}, false /** commit false**/ );
+```
+
+```java
+Crypto.repository.requireTransaction(tx -> {
+    // We can hook in to do something once the commit is succesful
+
+    tx.afterCommit(() -> {
+        // Send email perhaps when we exit the transaction after succesfully committing!
+ 
+        // We have now inserted the value in our database successfully!
+
+        // We do not want to send the email unless we actually have 100% inserted the stuff so this is a handy method to use for that 
+    });
+
+    super.save(entity);
+});
+```
+
+```java
+// We can return something from inside the transaction
+
+Etherum e = Crypto.repository.requireTransaction(() -> {
+    return super.save(entity); // We repeat the return demo but by returning an entity
+});
+```
+
+```java
+// We can return again, showcasing that you can return anything really
+
+String returns = Crypto.repository.requireTransaction(() -> {
+    super.save(entity);
+
+    return "we can return anything from the transactional lambda";
+});
+```
+
+```java
+// We do not need to use a lambda to get access to tx to execute things more freely                    
+
+$TransactionHibernate tx = Crypto.repository.requireTransaction();
+super.save(entity);
+tx.autocommit(false);
+tx.afterCommit   (()-> {});
+tx.afterRollback (()-> { /* A crime has been committed! Report error to the FBI! */ });
+tx.rollback();
+tx.commit();
+```                                     
+
+```java
+// Getting a transaction that we can pass around and execute manually with or without a lambda
+
+$TransactionHibernate tx = Crypto.repository.requireOptions()
+    .propagation($TransactionOptions.Propagation.NEW)
+    .isolation($TransactionOptions.Isolation.REPEATABLE_READ)
+    .timeout(1000)
+    .create()
+;                                     
+
+tx.execute(()-> {
+    save(entity);
+});
+
+tx.execute(()-> {
+    save(entity);
+
+    tx.commit();
+}, false /** don't commit **/ );
+```                 
+
+```java
+// We can rollback                                                          
+
+Crypto.repository.newTransaction(tx -> {
+    super.save(entity);
+
+    tx.rollback();
+
+    // note, now, the autocommit won't occur, as we have rolled back and basically discarded the entire transaction.  
+});
+```
+
+```java
+// We show that exceptions will bubble up to the caller
+                                 
+try {
+    Crypto.repository.requireTransaction(() -> {
+        throw new IOException();
+    });
+} catch (IOException exception) {
+    // Will bubble the exception to the caller (due to Lambda.VE, Lambda.V1E) after rolling back. If there is a rollback exception, a $DatabaseRollbackException will be thrown instead. Will not commit.  
+}
+```
+
+```java
+// We can return as well as throwing exceptions
+
+try {
+    File file = Crypto.repository.requireTransaction(() -> {
+        if ( false ) {
+            throw new IOException();
+        }
+        return new File("");
+    });
+} catch (IOException exception) {
+    // Will bubble the exception to the caller (due to Lambda.VE, Lambda.V1E) after rolling back. If there is a rollback exception, a $DatabaseRollbackException will be thrown instead. Will not commit.
+}
+```                                 
+
+```java
+// We can get access to the actual session and retain 100% control
+
+Session s1 = Crypto.repository.requireSession();
+Session s2 = Crypto.repository.newSession();
+```                                            
+
+```java
+// We can build the transaction properties and set various things ourselves
+
+Crypto.repository.requireOptions()
+    .propagation($TransactionOptions.Propagation.NEW)
+    .isolation($TransactionOptions.Isolation.REPEATABLE_READ)
+    .timeout(1000)
+    .create()
+    .execute((tx)-> {
+        tx.autocommit(false);
+        tx.afterCommit(()-> {});
+        tx.afterRollback(()-> {});
+
+        // ... 
+    })
+;
+```
+
+```java
+// Similar to previous example but without chaining the options. 
+  
+$TransactionOptionsHibernate options = Crypto.repository.requireOptions();
+// ... options.propagation(...)
+// ... options.create().execute(...)
+```
+
+```java
+// More options made visibile
+                                      
+Crypto.repository.requireOptions()
+    .timeout(1000)
+
+    // Notice the withConnection option being used! Full access! 
+    .withConnection((java.sql.Connection connection) -> {
+        connection.setReadOnly(true);
+        connection.setCatalog("catalog");
+        connection.setTransactionIsolation(1);
+        connection.clearWarnings();
+        connection.createStatement();
+        connection.setTypeMap(new HashMap<>());
+        connection.setHoldability(1);
+        connection.setSavepoint();
+        // ...
+    })
+    .create()
+    .execute(tx -> {
+        tx.autocommit(false);
+
+        save(entity);
+
+        tx.commit();
+    })
+;
+```
 
 ### Contribute
 Send an email to `opensource{at}momomo.com` if you would like to contribute in any way, make changes or otherwise have thoughts and/or ideas on things to improve.
