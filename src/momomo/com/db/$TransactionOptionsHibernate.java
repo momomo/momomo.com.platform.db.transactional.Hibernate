@@ -67,8 +67,8 @@ public class $TransactionOptionsHibernate extends $TransactionOptions<$Transacti
             });
         }
         
-        // Not new, we need to double check that this old transaction is not read only when we actually invoked requireTransaction?
-        else if ( !SUPPORT.equals(propagation) || manager.isReadOnly() ) {
+        // Not new, we need to double check that this already active transaction is not read only when we actually invoked requireTransaction, and thus requiring a write capable transaction
+        else if ( !SUPPORT.equals(propagation) && manager.isReadOnly() ) {
             // Either require or new for propagation and we are already readonly
             // Can only be resolved through a new session.
             return create(NEW);

@@ -31,4 +31,9 @@ public class $TransactionHibernate extends $Transaction<$TransactionHibernate> {
     public $TransactionManagerHibernate manager() {
         return manager;
     }
+    
+    @Override
+    public String toString() {
+        return getClass().getName() + "@" + System.identityHashCode(manager.delegate());
+    }
 }
