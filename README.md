@@ -44,8 +44,7 @@ Allows for nanosecond time resolution when asking for time from Java Runtime in 
 
 #### On [Lambda](https://github.com/momomo/momomo.com.platform.Lambda)
 
-What makes this possible or even a reality is the existence of **[`momomo.com.platform.Lambda`](https://github.com/momomo/momomo.com.platform.Lambda)** which we've now had in our posession for over 10 years.  
-There is nothing magical about it, yet something similar is lacking in presence in the Java world.    
+What makes this possible or even a reality is the existence of **[`momomo.com.platform.Lambda`](https://github.com/momomo/momomo.com.platform.Lambda)** which we've now had in our posession for over 10 years. There is nothing magical about it, yet something similar is lacking in presence in the Java world.    
    
 Similar libraries might have recently made the scene but not quite as powerful nor as intuitive, we think. 
 
