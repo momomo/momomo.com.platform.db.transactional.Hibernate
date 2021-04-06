@@ -662,7 +662,7 @@ public void populate(int multiplier) {
     });
 }                                           
 ```
-We also added a couple more methods, just as examples on what else we can do: 
+We also added a couple more methods, just as examples on what else we can do, although never invoked: 
 
 ```java
 // Return all the historic data within polkadot table
