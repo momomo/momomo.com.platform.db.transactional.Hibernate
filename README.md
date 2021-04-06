@@ -202,7 +202,7 @@ public class CryptoMinimal {
 }
 ```  
    
-Now that you've seen it, glanced it, consumed it, you may ***proceed*** after also glancing **[`Crypto.java`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/Crypto.java)** which is the one we actually use.
+Now that you've seen it, glanced it, consumed it, as well as having glanced **[`Crypto`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/Crypto.java)** which is the one we actually use, you may ***proceed***.
 
 ---
 
