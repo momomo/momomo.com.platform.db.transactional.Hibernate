@@ -192,12 +192,6 @@ public class CryptoMinimal {
         @Override protected String[] packages() {
             return new String[]{ "momomo/com/example/app/entities" }; // The package to scan for entities 
         }
-        
-        @Override protected Params params() {
-            return new Params().export(export ->
-                export.target(TargetType.DATABASE).action(SchemaExport.Action.BOTH)
-            );
-        }
     }
     
     public static final class CryptoTransactionalRepository implements $SessionFactoryRepository, $TransactionalHibernate {
@@ -208,7 +202,7 @@ public class CryptoMinimal {
 }
 ```  
    
-Now that you've seen it, glanced it, consumed it, you may ***proceed***.
+Now that you've seen it, glanced it, consumed it, you may ***proceed*** after also glancing **[`Crypto.java`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/Crypto.java)** which is the one we actually use.
 
 ---
 
