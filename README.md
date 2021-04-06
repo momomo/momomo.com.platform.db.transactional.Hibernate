@@ -77,7 +77,7 @@ To get the *transactional features* using *Spring annotations* the code needs to
   4. You need a spring managed bean or use them. You need to inject it whereever you need to get transactional. Spring will hijack and show you stacktraces that are a frequent time waster to parse. Nothing is clear about them. Your exception stacktraces look like a labyrinth and you spend time finding the tiny bug you have which is the most costly part of using Spring hands down since it hijacks your entire Java platform.
 
 Now this to us, introduces a bunch of issues as code is difficult enough to organize **well** using the standard restrictions the `Java` language has alone and is now affecting the way you can code further 
-by forcing code that lives perfectly well within a method to be extracted and then somehow find itself to a Spring bean rather than stay where it is most relevant, where it was, just because you needed some code run in a transaction.
+by forcing code that lives perfectly well within a method to be extracted and then somehow find itself to a Spring bean rather than stay where it is most relevant, where it was, *just because you needed some code run in a transaction*.
 The extraction can not be **`private`** but now has to be made **`public`** and not only that, they can not be invoked directly unless invoked from the injected **`proxying`** bean.
 
 Repeat this enough times, and your code starts to look like Chernobyl, all because you need to code the **`Spring`** way. **`Spring`** enforces a subset of Java to work well, rather than add to Java. It is therefore a lesser, limited version of Java. Start using Spring and all your code now has to use Spring to invoke anything.
