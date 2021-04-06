@@ -88,15 +88,13 @@ Spring is a bit kinder in their code though where Hibernate by default has **`pr
 
 Our code, including the building of the **`SessionFactory`** and/or **`EntityManager`** as well as being able to run code in **transactions** can all be run from a **`static void main`**.
  
-Can your Spring code do that? **`static void main`** only and run? **1 sec** launch? A `static void main` can startup in less than a `half a second` within your editor, while the injected stuff Spring pulls, requires a lot of ***orchestration***, an initiator, scanning and what not before allowing you do anything.  
+Can your Spring code do that? **`static void main`** only and run? **1 sec** launch? A `static void main` can startup in less than a `half a second` within your editor, while the injected stuff Spring pulls requires a lot of ***orchestration***, an initiator, scanning and what not before allowing you do anything.   
 
 #### On Hibernate
 Now, using Hibernate as is, is better according to us. However, not much flavour gets added. Spring actually adds a some neccessary functionality, and their better transaction / session manager.   
 Hibernates **`transaction manager`** / **`sessionfactory`** is not great. Their **`thread`** implementation severely lacking. But we fixed its shortcomings.  
     
-But most people do not even know how to setup Hibernate without Spring. Without **`XML`**. It is not an easy topic to find info about. 
-See our **[`$SessionConfig.java`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfig.java)** implementation for that.   
-It is not all that easy, nor is it easy to google anything on Hibernate and not get a Spring answer today. 
+But most people do not even know how to setup Hibernate without Spring and without **`XML`**. It is not an easy topic to find info about actually. But we did the implementation in our **[`$SessionConfig.java`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/tree/master/src/momomo/com/db/$SessionConfig.java)**. It is not all that easy as you can see, nor is it easy to google anything on Hibernate and not get a Spring answer today. 
  
 > Remember the Javascript answers on **`StackOverflow.com`** not long ago? They used to be all **`jQuery`** related.   
  
