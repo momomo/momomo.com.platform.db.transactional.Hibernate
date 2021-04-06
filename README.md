@@ -80,24 +80,18 @@ Now this to us, introduces a bunch of issues as code is difficult enough to orga
 by forcing code that lives perfectly well within a method to be extracted and then somehow find itself to a Spring bean rather than stay where it is most relevant, where it was, *just because you needed some code run in a transaction*.
 The extraction can not be **`private`** but also has to be made **`public`**, and not only that, they can not be invoked directly unless invoked from an injected **`proxying`** bean, so forget `static`, and forget creating the instances yourself, separating logic into several classes.  
 
-Repeat this enough times, and your code starts to look like *Chernobyl* all because you need to code the **`Spring`** way. **`Spring`** allows you to *only use a subset* of Java to work well, *rather than add* to Java. It is therefore a lesser, limited version of Java. Start using Spring and all your code now has to use Spring to invoke anything.
+Repeat this enough times, and your code starts to look like *Chernobyl* all because you need to code the **`Spring`** way. **`Spring`** allows you to *only use a subset* of Java to work well, *rather than add* to Java. It is therefore by definition, *a lesser*, and more limited version of Java. Start using Spring and all your code now has to use Spring to invoke anything. 
 
-Spring is not all that bad, there is plenty of material on how to setup things using Spring, which makes it easy to setup most of the time but it is not the dream of any hardcore Java developer.
-   
-You give up a lot of your Java powers to be on that ecosystem and once you start injecting or annotating, they got you hooked.   
-Spring works hard to lock you into their eco system. So does Hibernate / RedHat / JBoss. They will all eventually sell you support and you will need it.
+But Spring is not all that bad, there is plenty of material on how to setup things using Spring, which makes it easy to setup most of the time but it is not the dream of any hardcore Java developer. You give up a lot of your Java powers to be on that ecosystem and once you start injecting or annotating, they got you hooked and they work hard to lock you into their eco system. So does Hibernate / RedHat / JBoss. They will eventually all sell you support.
      
-Spring is a bit kinder in their code though where Hibernate by default has **`private`** access on almost all of their code. That makes it hard to extend and/ord modify behaiviour, so Spring is not all that bad, but once you start injecting, good luck breaking loose. It took us years to do so and there is no reason to be injecting stuff in the first place, and the amount of restrictions that this entails is far too many to sacrifice. 
+Spring is a bit kinder in their code though where Hibernate by default has **`private`** access on almost all of their code. That makes it hard to extend and/ord modify behaiviour, so Spring is not all that bad, but once you start injecting, good luck breaking loose! It took us years to do so and there is *no good reason* to be injecting stuff in the first place and the amount of restrictions that this entails is far too many to accept. 
 
 Our code, including the building of the **`SessionFactory`** and/or **`EntityManager`** as well as being able to run code in **transactions** can all be run from a **`static void main`**.
  
-Can your Spring code do that? **`static void main`** only and run? **1 sec** launch?    
-A `static void main` can startup in less than a `half a second` within your editor, while the injected stuff Spring pulls, requires a lot of ***orchestration***, an initiator, scanning and what not before allowing you do anything. 
-
-Sure, you use **`Spring Boot`**, it runs in a **`static void main`** you say! Yes, but it starts a server to give you access and everything has to run through that. Not easy.  
+Can your Spring code do that? **`static void main`** only and run? **1 sec** launch? A `static void main` can startup in less than a `half a second` within your editor, while the injected stuff Spring pulls, requires a lot of ***orchestration***, an initiator, scanning and what not before allowing you do anything.  
 
 #### On Hibernate
-Now, using Hibernate as is, is good, however, not much flavour gets added. Spring actually adds a some neccessary functionality, and their better transaction / session manager.   
+Now, using Hibernate as is, is better according to us. However, not much flavour gets added. Spring actually adds a some neccessary functionality, and their better transaction / session manager.   
 Hibernates **`transaction manager`** / **`sessionfactory`** is not great. Their **`thread`** implementation severely lacking. But we fixed its shortcomings.  
     
 But most people do not even know how to setup Hibernate without Spring. Without **`XML`**. It is not an easy topic to find info about. 
