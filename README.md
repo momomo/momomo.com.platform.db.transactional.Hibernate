@@ -78,7 +78,7 @@ To get the *transactional features* using *Spring annotations* the code needs to
 
 Now this to us, introduces a bunch of issues as code is difficult enough to organize **well** using the standard restrictions the `Java` language has alone and is now affecting the way you can code further 
 by forcing code that lives perfectly well within a method to be extracted and then somehow find itself to a Spring bean rather than stay where it is most relevant, where it was, *just because you needed some code run in a transaction*.
-The extraction can not be **`private`** but now has to be made **`public`** and not only that, they can not be invoked directly unless invoked from the injected **`proxying`** bean.
+The extraction can not be **`private`** but also has to be made **`public`**, and not only that, they can not be invoked directly unless invoked from an injected **`proxying`** bean, so forget `static`, and forget creating the instance yourself.  
 
 Repeat this enough times, and your code starts to look like Chernobyl, all because you need to code the **`Spring`** way. **`Spring`** enforces a subset of Java to work well, rather than add to Java. It is therefore a lesser, limited version of Java. Start using Spring and all your code now has to use Spring to invoke anything.
 
