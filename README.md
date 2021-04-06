@@ -662,7 +662,7 @@ public void populate(int multiplier) {
     });
 }                                           
 ```
-In **[`Stellar.Service`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Stellar.java)** we also added a couple more methods, just as examples on what else we can do: 
+We also added a couple more methods, just as examples on what else we can do: 
 
 ```java
 // Return all the historic data within polkadot table
