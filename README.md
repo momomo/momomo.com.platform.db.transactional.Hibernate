@@ -59,25 +59,23 @@ It is just a bunch of interface classes after all contained in one file, and *no
 
 #### On Spring
 
-Most of the industry today relies on the use of Spring **`@Transactional(propagation = Propagation.REQUIRES_NEW)`** and **`@Transactional(propagation = Propagation.REQUIRES)`** **`@Transactional(propagation = Propagation.SUPPORTS)`**.  
+Most of the industry today relies on the use of Spring **`@Transactional(propagation = Propagation.REQUIRES_NEW)`**, **`@Transactional(propagation = Propagation.REQUIRES)`** and **`@Transactional(propagation = Propagation.SUPPORTS)`**.  
 
-We did too, and frequently run into several very common issues. 
+We did too and frequently run into several very common issues. 
  
 To get the *transactional features* using *Spring annotations* the code needs to be:
    
-   &nbsp; a. Placed into a method of its own. So code has to be extracted and pollute the outer class scope.   
-   &nbsp; &nbsp; &nbsp; Further, the method will have to declare a bunch of parametnanoers for you to pass whatever you needed in the previous scope.   
-   &nbsp; &nbsp; &nbsp; Parameter and method pollution. Not great.  
-   &nbsp;        
-   &nbsp; b. The method has to be **`public`** and so can not be **`protected`** or **`private`** when that might be the appropiate choice.   
-   &nbsp; &nbsp; &nbsp; A **`protected`** and **`private`** method tells your class, subclasses something and outer world something else. They are important as communicators.  
-   &nbsp;    
-   &nbsp; c. The method **has to be invoked** using Springs injected beans, so a class or 'service' can not even invoke its own method directly.  
-   &nbsp; &nbsp; &nbsp; This is risky since someone might do the wrong thing, invoke the method, expect a certain behaviour and not get it.  
-   &nbsp; &nbsp;   
-   &nbsp; d. You need a spring managed bean or use them. You need to inject it whereever you need to get transactional.     
-   &nbsp; &nbsp; &nbsp; Spring will hijack and show you stacktraces that are a frequent time waster to parse. Nothing is clear about them.   
-   &nbsp; &nbsp; &nbsp; Your exception stacktraces look like a labyrinth and you spend time finding the tiny bug you have which is the most costly part of using Spring hands down since it hijacks your entire Java platform.        
+  1. Placed into a method of its own. So code has to be extracted and pollute the outer class scope.   
+  Further, the method will have to declare a bunch of parametnanoers for you to pass whatever you needed in the previous scope.   
+   Parameter and method pollution. Not great.  
+  
+  2. The method has to be **`public`** and so can not be **`protected`** or **`private`** when that might be the appropiate choice.   
+   A **`protected`** and **`private`** method tells your class, subclasses something and outer world something else. They are important as communicators.  
+   
+  3. The method **has to be invoked** using Springs injected beans, so a class or 'service' can not even invoke its own method directly.  
+   This is risky since someone might do the wrong thing, invoke the method, expect a certain behaviour and not get it.  
+   
+  4. You need a spring managed bean or use them. You need to inject it whereever you need to get transactional. Spring will hijack and show you stacktraces that are a frequent time waster to parse. Nothing is clear about them. Your exception stacktraces look like a labyrinth and you spend time finding the tiny bug you have which is the most costly part of using Spring hands down since it hijacks your entire Java platform.
 
 Now this to us, introduces a bunch of issues as code is difficult enough to organize **well** using the standard restrictions the `Java` language has alone and is now affecting the way you can code further 
 by forcing code that lives perfectly well within a method to be extracted and then somehow find itself to a Spring bean rather than stay where it is most relevant, where it was, just because you needed some code run in a transaction.
