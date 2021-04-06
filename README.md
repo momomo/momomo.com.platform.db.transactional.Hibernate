@@ -580,7 +580,7 @@ While in **[`Bitcoin`](https://github.com/momomo/momomo.com.example.app.Crypto/t
 
 We need not to **`requireTransaction()`** for every database operation and in reality the callers would know database operations are to be performed and thus know the entire *transaction scope*, likely containing more more many reads and inserts across several tables to create all of the things at action time.
 
-Using `Spring`, that caller would have had to extract those parts to fit neatly into a method while the caller for us would simply wrap them inside a lambda. 
+Using `Spring`, the caller would have had to extract those parts to fit neatly into a method while the caller for us would simply wrap them inside a lambda. 
 
 So rather than doing: 
 
