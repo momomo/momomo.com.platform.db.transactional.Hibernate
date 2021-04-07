@@ -151,16 +151,19 @@ All of this can execute from a **`static void main`**. **Zero** xml. **Zero** co
 
 The best way we can showcase things, is simply to show you the code that is fully functional and which you can download, navigate and/or run immediately yourself from our example application by visiting our **[`momomo.com.example.app.Crypto`](https://github.com/momomo/momomo.com.example.app.Crypto)** which details almost all of it, and can be checked out and includes a fully working and executable `static void main` where we setup database entities as well as demonstrate other parts of our database related libraries and their usage.  
 
-Relevant extracts from the **[`momomo.com.example.app.Crypto`](https://github.com/momomo/momomo.com.example.app.Crypto)** can be found below:
-
 ---
 
 ### From **[`momomo.com.example.app.Crypto`](https://github.com/momomo/momomo.com.example.app.Crypto)**
 
+The entire thing is really much much simpler to understand and navigate if you just **check out the entire repository**, **navigate and/or run** the examples. But we will try to guide you here as well.
+
+We've decided to develop a **Crypto** related application!
+
 Start by looking at
 
-* **[`Crypto.java`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/Crypto.java)**  
-  Contains code for setting up the postgresql `database` and the Hibernate `SessionFactory` as well as provides a `CryptoTransactional` and `CryptoRepository` which will be used in our examples later. Is separated intentionally to show you the areas of responsibility. This is the implementation used in our running examples.  
+* **[`Crypto.java`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/Crypto.java)** Contains code for setting up the postgresql `database` and the Hibernate `SessionFactory` as well as provides a `CryptoTransactional` and `CryptoRepository` which will be used in our examples later and is the implementation used in our running examples.    
+  
+  Objects are created and separated intentionally to show you the different areas of responsibility.     
 
 * **[`CryptoMinimal.java`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/extra/CryptoMinimal.java)** is very similar to **[`Crypto`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/Crypto.java)** but is densed downed to show you what the minimal working configuration actually would look like.
 
@@ -172,7 +175,7 @@ Start by looking at
 public class CryptoMinimal {
     
     private static final SessionFactory                SESSION_FACTORY = new CryptoSessionConfig().create();
-    public  static final CryptoTransactionalRepository repository      = new CryptoTransactionalRepository();
+    public  static final CryptoTransactionalRepository REPOSITORY      = new CryptoTransactionalRepository();
     
     public static final class CryptoDatabase implements $DatabasePostgres {
         @Override public String name() {
@@ -182,19 +185,26 @@ public class CryptoMinimal {
         @Override public String password() {
             return "postgres";
         }
-    }
+    }                                                                
+
+    /////////////////////////////////////////////////////////////////////
     
     public static final class CryptoSessionConfig extends $SessionConfig<CryptoDatabase> {
-        public CryptoSessionConfig() {
+        private CryptoSessionConfig() {
             super(new CryptoDatabase());
         }
         
         @Override protected String[] packages() {
             return new String[]{ "momomo/com/example/app/entities" }; // The package to scan for entities 
         }
-    }
+    }                                                 
+
+    /////////////////////////////////////////////////////////////////////
     
-    public static final class CryptoTransactionalRepository implements $SessionFactoryRepository, $TransactionalHibernate {
+    /**
+     * Note, both a repository and a transactional instance class in one! 
+     */                                                                     
+    public static final class CryptoTransactionalRepository implements $SessionManagerRepository, $TransactionalHibernate {
         @Override public SessionFactory sessionFactory() {
             return SESSION_FACTORY;
         }
@@ -208,7 +218,9 @@ Now that you've seen it, glanced it, consumed it, as well as having glanced **[`
 
 ### Demonstration of the `Transactional` API 
 
-Link to **[`$TransactionalHibernate`](https://github.com/momomo/momomo.com.platform.db.transactional.Hibernate/tree/master/src/momomo/com/db/%24TransactionalHibernate.java)**, **[`$Transactional`](https://github.com/momomo/momomo.com.platform.db.transactional/tree/master/src/momomo/com/db/%24Transactional.java)**, **[`$SessionFactoryRepository`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/blob/master/src/momomo/com/db/sessionfactory/$SessionFactoryRepository.java)** 
+Link to **[`$TransactionalHibernate`](https://github.com/momomo/momomo.com.platform.db.transactional.Hibernate/tree/master/src/momomo/com/db/%24TransactionalHibernate.java)**, **[`$SessionFactoryRepository`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/blob/master/src/momomo/com/db/sessionfactory/$SessionFactoryRepository.java)** and for the lazy here are the signatures in **[`$Transactional`](https://github.com/momomo/momomo.com.platform.db.transactional/tree/master/src/momomo/com/db/%24Transactional.java)**:
+
+![Transactional API signatures](https://github.com/momomo/momomo.com.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/signatures.transactional.2021.04.07.V1.jpg?raw=true)
 
 ### `Part 1` - **[`Bitcoin.java`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Bitcoin.java)** 
 
@@ -226,19 +238,18 @@ We start by looking at our **first entity** **[`Bitcoin`](https://github.com/mom
 ``` ... ```
 
 ```java
-    public static final Service S = new Service(); public static final class Service {    
-       /** 
-        * Insert method that creates a bitcoin, then requires a transaction, and then saves it within the transaction, which then commits if it was the one to start it.  
-        */                  
-        public Bitcoin insert(Timestamp time, double usd) {
-            // This "very very expensive" creation need not to run inside the transaction 
-            Bitcoin entity = new Bitcoin().setId(UUID.randomUUID()).setTime(time).setUsd(usd);
-    
-            // Now, require the transaction and execute save within, also return the saved entity. 
-            return Crypto.repository.requireTransaction(() -> {
-                return Crypto.repository.save(entity);
-            });
-        }
+public static final Service S = new Service(); public static final class Service {    
+   /** 
+    * Insert method that creates a bitcoin, then requires a transaction, and then saves it within the transaction, which then commits if it was the one to start it.  
+    */                  
+    public Bitcoin insert(Timestamp time, double usd) {
+        // This "very very expensive" creation need not to run inside the transaction 
+        Bitcoin entity = new Bitcoin().setId(UUID.randomUUID()).setTime(time).setUsd(usd);
+
+        // Now, require the transaction and execute save within, also return the saved entity. 
+        return Crypto.repository.requireTransaction(() -> {
+            return Crypto.repository.save(entity);
+        });
     }
 }
 ```
@@ -291,7 +302,7 @@ from anyplace, even from a plain **`static void main`**.
 So given the following in **[`Bitcoin.Service`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Bitcoin.java)**:
 
 ```java
- public Bitcoin insert(Timestamp time, double usd) {
+public Bitcoin insert(Timestamp time, double usd) {
     Bitcoin entity = new Bitcoin().setId(Randoms.UUID()).setTime(time).setUsd(usd);
 
     return Crypto.repository.requireTransaction((tx)-> {
@@ -331,8 +342,8 @@ You saw **`requireTransaction(()->{ ... })`** in **[`Bitcoin`](https://github.co
   The implementation is **minimal**, **simple** and **straightforward** to declare and use. 
 
 ```java
-public abstract static class CryptoService<T extends $EntityId> extends $Service<T> implements CryptoTransactional { 
-    /** That's it! **/ 
+public static abstract class CryptoService<T extends $EntityId> extends $Service<T> implements $TransactionalHibernate {
+    @Override public CryptoRepository repository() { return CRYPTO.REPOSITORY; }
 }
 ```
 
@@ -576,11 +587,9 @@ requireOptions()
 
 ### `Part 4` - **[`Stellar.java`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Stellar.java)**  
 
-While in **[`Bitcoin`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Bitcoin.java)**, **[`Etherum`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Etherun.java)**, **[`Polkadot`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Polkadot.java)** services, we required the transaction inside the insert method, in **[`Stellar`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Stellar.java)**, we no longer make use of `requireTransaction()` there because we figured it was better design to *place that burden* on the caller to know the call needs a transaction to reduce boiler plate further. 
+While in **[`Bitcoin`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Bitcoin.java)**, **[`Etherum`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Etherun.java)**, **[`Polkadot`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Polkadot.java)** services, we required the transaction inside the insert method, in **[`Stellar`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Stellar.java)**, we no longer make use of `requireTransaction()` there because we figured it was better design to *place that burden* on the caller to know the call needs a transaction to reduce boiler plate further.
 
-We need not to **`requireTransaction()`** for every database operation and in reality the callers would know database operations are to be performed and thus know the entire *transaction scope*, likely containing more more many reads and inserts across several tables to create all of the things at action time.
-
-Using `Spring`, the caller would have had to extract those parts to fit neatly into a method while the caller for us would simply wrap them inside a lambda. 
+Using `Spring`, the caller would have had to extract those parts to fit neatly into a method while the caller for us would simply wrap them inside a lambda.  
 
 So rather than doing: 
 
@@ -590,7 +599,7 @@ public Stellar insert(Timestamp time, double usd) {
 }
 ```
 
-in **[`Stellar.Service`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Stellar.java)** we instead simply do:    
+in **[`Stellar.Service`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Stellar.java)** we simply do:    
 
 ```java
 public Stellar insert(Timestamp time, double usd) {
@@ -662,7 +671,7 @@ public void populate(int multiplier) {
     });
 }                                           
 ```
-We also added a couple more methods, just as examples on what else we can do, although never invoked: 
+We also added a couple more methods, just as examples on what else we can do, although never invoked:  
 
 ```java
 // Return all the historic data within polkadot table
@@ -737,7 +746,8 @@ When we run this static void main we will eventually find the **following in our
    ![Polkadot table](https://github.com/momomo/momomo.com.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/database.polkadot.table.2021.04.03.V2.jpg?raw=true)        
    
    * ***stellar table***  
-   ![Stellar table](https://github.com/momomo/momomo.com.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/database.stellar.table.2021.04.03.V2.jpg?raw=true)
+   ![Stellar table](https://github.com/momomo/momomo.com.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/database.stellar.table.2021.04.03.V2.jpg?raw=true)        
+           
 
 ### Contribute
 Send an email to `opensource{at}momomo.com` if you would like to contribute in any way, make changes or otherwise have thoughts and/or ideas on things to improve.
