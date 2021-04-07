@@ -218,7 +218,7 @@ Now that you've seen it, glanced it, consumed it, as well as having glanced **[`
 
 ### Demonstration of the `Transactional` API 
 
-Link to **[`$TransactionalHibernate`](https://github.com/momomo/momomo.com.platform.db.transactional.Hibernate/tree/master/src/momomo/com/db/%24TransactionalHibernate.java)**, **[`$SessionFactoryRepository`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/blob/master/src/momomo/com/db/sessionfactory/$SessionFactoryRepository.java)** and for the lazy here are the signatures in **[`$Transactional`](https://github.com/momomo/momomo.com.platform.db.transactional/tree/master/src/momomo/com/db/%24Transactional.java)**:
+Link to **[`$TransactionalHibernate`](https://github.com/momomo/momomo.com.platform.db.transactional.Hibernate/tree/master/src/momomo/com/db/%24TransactionalHibernate.java)**, **[`$SessionFactoryRepository`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/blob/master/src/momomo/com/db/sessionfactory/$SessionFactoryRepository.java)** and for the lazy here are the method signatures in **[`$Transactional`](https://github.com/momomo/momomo.com.platform.db.transactional/tree/master/src/momomo/com/db/%24Transactional.java)**:
 
 ![Transactional API signatures](https://github.com/momomo/momomo.com.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/signatures.transactional.2021.04.07.V1.jpg?raw=true)
 
