@@ -156,13 +156,13 @@ We've decided to develop a **Crypto** related application!
 
 Start by looking at
 
-* **[`Crypto.java`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/Crypto.java)** Contains code for setting up the postgresql `database` and the Hibernate `SessionFactory` as well as provides a `CryptoTransactional` and `CryptoRepository` which will be used in our examples later and is the implementation used in our running examples.    
+* **[`Crypto.java`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/Crypto.java)** Contains code for setting up the postgresql `database` and the Hibernate **`SessionFactory`** as well as provides a **`CryptoTransactional`** and **`CryptoRepository`** which will be used in our examples later and is the implementation used in our running examples.    
   
   Objects are created and separated intentionally to show you the different areas of responsibility.     
 
 * **[`CryptoMinimal.java`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/extra/CryptoMinimal.java)** is very similar to **[`Crypto`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/Crypto.java)** but is densed downed to show you what the minimal working configuration actually would look like.
 
-* **[`CryptoLargest.java`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/extra/CryptoLargest.java)** is very similar to **[`Crypto`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/Crypto.java)** but contains more **examples and comments** on some things we can modify when setting up our `database` and the `SessionFactory`.  
+* **[`CryptoLargest.java`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/extra/CryptoLargest.java)** is very similar to **[`Crypto`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/Crypto.java)** but contains more **examples and comments** on some things we can modify when setting up our `database` and the **`SessionFactory`**.  
   
 ```java                                               
 // This is all code required to get started!
