@@ -355,7 +355,7 @@ Crypto.repository.requireTransaction(() -> {
 ```
 
 ```java
-// This is what we now do through inheritance
+// This is what we now do through inheritance now
  
 requireTransaction(() -> {
     return save(entity);
