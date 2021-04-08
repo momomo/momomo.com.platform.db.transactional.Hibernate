@@ -355,8 +355,10 @@ We make use of this class in a another class **[`Polkadot`](https://github.com/m
 
 Crypto.repository.requireTransaction(() -> {
     return Crypto.repository.save(entity);
-});
+});                            
+```
 
+```java
 // This is what we now do through inheritance
  
 requireTransaction(() -> {
