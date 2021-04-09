@@ -744,7 +744,7 @@ public static void main(String[] args) {
 
 When we run this static void main we will eventually find the **following in our database**:  
 
-![Generated tables](https://github.com/momomo/momomo.com.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/database.tables.2021.04.09.V1.hibernate.jpg?raw=true)                
+![Generated tables](https://github.com/momomo/momomo.com.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/database.tables.2021.04.09.V2.hibernate.jpg?raw=true)                
 
    * ***bitcoin table***  
    ![Bitcoin table](https://github.com/momomo/momomo.com.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/database.bitcoin.table.2021.04.05.V1.jpg?raw=true)        
