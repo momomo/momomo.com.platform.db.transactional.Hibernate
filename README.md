@@ -146,9 +146,9 @@ All of this can execute from a **`static void main`**. **Zero** xml. **Zero** co
 
 ## Getting started
 
-The best way we can showcase things, is simply to show you the code that is fully functional and which you can download, navigate and/or run immediately yourself from our example application by visiting our **[`momomo.com.example.app.Crypto`](https://github.com/momomo/momomo.com.example.app.Crypto)** which details almost all of it, and can be checked out and includes a fully working and executable `static void main` where we setup database entities as well as demonstrate other parts of our database related libraries and their usage.  
+The best way we can showcase things, is simply to show you the code that is fully functional and which you can download, navigate and/or run immediately yourself from our example application by visiting our **[`momomo.com.example.app.Crypto.based.on.hibernate.libraries`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries)** which details almost all of it, and can be checked out and includes a fully working and executable `static void main` where we setup database entities as well as demonstrate other parts of our database related libraries and their usage.  
 
-## From **[`momomo.com.example.app.Crypto`](https://github.com/momomo/momomo.com.example.app.Crypto)**
+## From **[`momomo.com.example.app.Crypto.based.on.hibernate.libraries`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries)**
 
 The entire thing is really much much simpler to understand and navigate if you just **check out the entire repository**, **navigate and/or run** the examples. But we will try to guide you here as well.
 
@@ -156,13 +156,13 @@ We've decided to develop a **Crypto** related application!
 
 Start by looking at
 
-* **[`Crypto.java`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/Crypto.java)** Contains code for setting up the postgresql `database` and the Hibernate **`SessionFactory`** as well as provides a **`CryptoTransactional`** and **`CryptoRepository`** which will be used in our examples later and is the implementation used in our running examples.    
+* **[`Crypto.java`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/Crypto.java)** Contains code for setting up the postgresql `database` and the Hibernate **`SessionFactory`** as well as provides a **`CryptoTransactional`** and **`CryptoRepository`** which will be used in our examples later and is the implementation used in our running examples.    
   
   Objects are created and separated intentionally to show you the different areas of responsibility.     
 
-* **[`CryptoMinimal.java`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/extra/CryptoMinimal.java)** is very similar to **[`Crypto`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/Crypto.java)** but is densed downed to show you what the minimal working configuration would actually look like.
+* **[`CryptoMinimal.java`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/extra/CryptoMinimal.java)** is very similar to **[`Crypto`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/Crypto.java)** but is densed downed to show you what the minimal working configuration would actually look like.
 
-* **[`CryptoLargest.java`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/extra/CryptoLargest.java)** is very similar to **[`Crypto`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/Crypto.java)** but contains more **examples and comments** on some things we can modify when setting up our `database` and the **`SessionFactory`**.  
+* **[`CryptoLargest.java`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/extra/CryptoLargest.java)** is very similar to **[`Crypto`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/Crypto.java)** but contains more **examples and comments** on some things we can modify when setting up our `database` and the **`SessionFactory`**.  
   
 ```java                                               
 // This is all code required to get started!
@@ -207,7 +207,7 @@ public class CryptoMinimal {
 }
 ```  
    
-Now that you've seen it, glanced it, consumed it, as well as having glanced **[`Crypto`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/Crypto.java)** which is the one we actually use, you may ***proceed***.
+Now that you've seen it, glanced it, consumed it, as well as having glanced **[`Crypto`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/Crypto.java)** which is the one we actually use, you may ***proceed***.
 
 ---
 
@@ -217,9 +217,9 @@ Link to **[`$TransactionalHibernate`](https://github.com/momomo/momomo.com.platf
 
 ![Transactional API signatures](https://github.com/momomo/momomo.com.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/signatures.transactional.2021.04.07.V1.jpg?raw=true)
 
-### `Part 1` - **[`Bitcoin.java`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Bitcoin.java)** 
+### `Part 1` - **[`Bitcoin.java`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/entities/Bitcoin.java)** 
 
-We start by looking at our **first entity** **[`Bitcoin`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Bitcoin.java)**
+We start by looking at our **first entity** **[`Bitcoin`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/entities/Bitcoin.java)**
 
 ```java                                                       
 @Entity ... public ... final class Bitcoin implements $Entity {
@@ -294,7 +294,7 @@ Bitcoin.S.insert(Time.stamp(), 10000.1)
 
 from anyplace, even from a plain **`static void main`**.  
 
-So given the following in **[`Bitcoin.Service`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Bitcoin.java)**:
+So given the following in **[`Bitcoin.Service`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/entities/Bitcoin.java)**:
 
 ```java
 public Bitcoin insert(Timestamp time, double usd) {
@@ -328,11 +328,11 @@ public static void main(String[] args) {
 
 which will **trigger** the database generation, **scan** for entity classes in the *configured packages*, setup the **`SessionFactory`** and get you a transaction to eventually create and **save** entities to the database.
 
-### `Part 2` - **[`Polkadot.java`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Polkadot.java)** 
+### `Part 2` - **[`Polkadot.java`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/entities/Polkadot.java)** 
 
-You saw **`requireTransaction(()->{ ... })`** in **[`Bitcoin`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Bitcoin.java)** but let us see *what else* we can do. 
+You saw **`requireTransaction(()->{ ... })`** in **[`Bitcoin`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/entities/Bitcoin.java)** but let us see *what else* we can do. 
  
- First however, we rewrite **[`Bitcoin`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Bitcoin.java)** class by making it **prettier** by utilitizing the already created inner class **[`Crypto.CryptoService`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/Crypto.java#L129)** at the **bottom** of **[`Crypto`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/Crypto.java)**. 
+ First however, we rewrite **[`Bitcoin`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/entities/Bitcoin.java)** class by making it **prettier** by utilitizing the already created inner class **[`Crypto.CryptoService`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/Crypto.java#L129)** at the **bottom** of **[`Crypto`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/Crypto.java)**. 
   
   The implementation is **minimal**, **simple** and **straightforward** to declare and use. 
 
@@ -342,9 +342,9 @@ public static abstract class CryptoService<T extends $EntityId> extends $Service
 }
 ```
 
-We make use of this class in a another class **[`Polkadot`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Polkadot.java)** that now contains a **minimal** version of the logic found in **[`Bitcoin`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Bitcoin.java)** with the following changes listed:
+We make use of this class in a another class **[`Polkadot`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/entities/Polkadot.java)** that now contains a **minimal** version of the logic found in **[`Bitcoin`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/entities/Bitcoin.java)** with the following changes listed:
 1. The entity class now extends **`$EntityIdUUID`** which will generate an UUID identifier for us, so need to manually set that part.  
-2. **[`Polkadot.Service`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Polkadot.java)** now **`extends`** **[`Crypto.CryptoService<Polkadot>`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/Crypto.java#L129)** which will gives access to a bunch of methods, such as **`save(..)`**, **`list()`**, **`validate()`**, **`findByField(...)`**, **`findByEntity(...)`**, **`reqireTransaction(...)`**, **`newTransaction(...)`**, **`supportTransaction(...)`** and many more without the need for external reference for access like in **[`Bitcoin`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Bitcoin.java)** where we did **`Crypto.repository.requireTransaction(...)`**, now we can simply do **`requireTransaction(...)`**.   
+2. **[`Polkadot.Service`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/entities/Polkadot.java)** now **`extends`** **[`Crypto.CryptoService<Polkadot>`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/Crypto.java#L129)** which will gives access to a bunch of methods, such as **`save(..)`**, **`list()`**, **`validate()`**, **`findByField(...)`**, **`findByEntity(...)`**, **`reqireTransaction(...)`**, **`newTransaction(...)`**, **`supportTransaction(...)`** and many more without the need for external reference for access like in **[`Bitcoin`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/entities/Bitcoin.java)** where we did **`Crypto.repository.requireTransaction(...)`**, now we can simply do **`requireTransaction(...)`**.   
 
 ```java                                      
 // This you saw in Bitcoin.java
@@ -362,9 +362,9 @@ requireTransaction(() -> {
 });
 ```                          
 
-### `Part 3` - **[`Etherum.java`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Etherum.java)**                                 
+### `Part 3` - **[`Etherum.java`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/entities/Etherum.java)**                                 
 
-Let us now take a look at sample code found in our **dummy class** **[`Etherum.Service`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Etherum.java)** which **`extends`** **[`Crypto.CryptoService<Etherum>`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/Crypto.java#L129)** containing just example code that is really never invoked. 
+Let us now take a look at sample code found in our **dummy class** **[`Etherum.Service`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/entities/Etherum.java)** which **`extends`** **[`Crypto.CryptoService<Etherum>`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/Crypto.java#L129)** containing just example code that is really never invoked. 
 
 ```java
 // Given 
@@ -582,9 +582,9 @@ requireOptions()
 ;
 ```                                                                                                                              
 
-### `Part 4` - **[`Stellar.java`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Stellar.java)**  
+### `Part 4` - **[`Stellar.java`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/entities/Stellar.java)**  
 
-While in **[`Bitcoin`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Bitcoin.java)**, **[`Etherum`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Etherun.java)**, **[`Polkadot`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Polkadot.java)** services, we required the transaction inside the insert method, in **[`Stellar`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Stellar.java)**, we no longer make use of `requireTransaction()` there because we figured it was better design to *place that burden* on the caller to know the call needs a transaction to reduce boiler plate further.
+While in **[`Bitcoin`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/entities/Bitcoin.java)**, **[`Etherum`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/entities/Etherun.java)**, **[`Polkadot`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/entities/Polkadot.java)** services, we required the transaction inside the insert method, in **[`Stellar`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/entities/Stellar.java)**, we no longer make use of `requireTransaction()` there because we figured it was better design to *place that burden* on the caller to know the call needs a transaction to reduce boiler plate further.
 
 Using `Spring`, the caller would have had to extract those parts to fit neatly into a method while the caller for us would simply wrap them inside a lambda.  
 
@@ -596,7 +596,7 @@ public Stellar insert(Timestamp time, double usd) {
 }
 ```
 
-in **[`Stellar.Service`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Stellar.java)** we simply do:    
+in **[`Stellar.Service`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/entities/Stellar.java)** we simply do:    
 
 ```java
 public Stellar insert(Timestamp time, double usd) {
@@ -606,7 +606,7 @@ public Stellar insert(Timestamp time, double usd) {
 
 Doing this we expect the caller to do the **`requireTransaction()`** call for us.  
 
-In **[`Stellar.Service`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/entities/Stellar.java)** we can also find more complex working example:  
+In **[`Stellar.Service`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/entities/Stellar.java)** we can also find more complex working example:  
 
 ```java
 /**
@@ -695,7 +695,7 @@ public List<Stellar> range(Timestamp from, Timestamp to) {
 
 ### `Part 5` - **`public static void main`**  
 
-If we now look at **[`PUBLIC_STATIC_VOID_MAIN`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/extra/PUBLIC_STATIC_VOID_MAIN.java)** we can find a `static void main` and some code ready to run the entire thing.
+If we now look at **[`PUBLIC_STATIC_VOID_MAIN`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/extra/PUBLIC_STATIC_VOID_MAIN.java)** we can find a `static void main` and some code ready to run the entire thing.
 
 ```java
 public static void main(String[] args) {
