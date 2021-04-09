@@ -160,7 +160,7 @@ Start by looking at
   
   Objects are created and separated intentionally to show you the different areas of responsibility.     
 
-* **[`CryptoMinimal.java`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/extra/CryptoMinimal.java)** is very similar to **[`Crypto`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/Crypto.java)** but is densed downed to show you what the minimal working configuration actually would look like.
+* **[`CryptoMinimal.java`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/extra/CryptoMinimal.java)** is very similar to **[`Crypto`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/Crypto.java)** but is densed downed to show you what the minimal working configuration would actually look like.
 
 * **[`CryptoLargest.java`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/extra/CryptoLargest.java)** is very similar to **[`Crypto`](https://github.com/momomo/momomo.com.example.app.Crypto/tree/master/src/momomo/com/example/app/Crypto.java)** but contains more **examples and comments** on some things we can modify when setting up our `database` and the **`SessionFactory`**.  
   
