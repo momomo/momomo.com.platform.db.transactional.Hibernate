@@ -150,10 +150,6 @@ All of this can execute from a **`static void main`**. **Zero** xml. **Zero** co
 
 ## Getting started
 
-The best way we can showcase things, is simply to show you the code that is fully functional and which you can download, navigate and/or run immediately yourself from our example application by visiting our **[`momomo.com.example.app.Crypto.based.on.hibernate.libraries`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries)** which details almost all of it, and can be checked out and includes a fully working and executable `static void main` where we setup database entities as well as demonstrate other parts of our database related libraries and their usage.  
-
-## From **[`momomo.com.example.app.Crypto.based.on.hibernate.libraries`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries)**
-
 The entire thing is really much much simpler to understand and navigate if you just **check out the entire repository**, **navigate and/or run** the examples. But we will try to guide you here as well.
 
 We've decided to develop a **Crypto** related application!
@@ -754,7 +750,6 @@ When we run this static void main we will eventually find the **following in our
    
    * ***stellar table***  
    ![Stellar table](https://github.com/momomo/momomo.com.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/database.stellar.table.2021.04.03.V2.jpg?raw=true)        
-           
 
 ### Contribute
 Send an email to `opensource{at}momomo.com` if you would like to contribute in any way, make changes or otherwise have thoughts and/or ideas on things to improve.
