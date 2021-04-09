@@ -173,8 +173,12 @@ Start by looking at
 
 public class CryptoMinimal {
     
+    /////////////////////////////////////////////////////////////////////
+    
     private static final SessionFactory                SESSION_FACTORY = new CryptoSessionConfig().create();
     public  static final CryptoTransactionalRepository REPOSITORY      = new CryptoTransactionalRepository();
+    
+    /////////////////////////////////////////////////////////////////////
     
     public static final class CryptoDatabase implements $DatabasePostgres {
         @Override public String name() {
@@ -184,8 +188,8 @@ public class CryptoMinimal {
         @Override public String password() {
             return "postgres";
         }
-    }                                                                
-
+    }
+    
     /////////////////////////////////////////////////////////////////////
     
     public static final class CryptoSessionConfig extends $SessionConfig<CryptoDatabase> {
@@ -196,18 +200,20 @@ public class CryptoMinimal {
         @Override protected String[] packages() {
             return new String[]{ "momomo/com/example/app/entities" }; // The package to scan for entities 
         }
-    }                                                 
-
+    }
+    
     /////////////////////////////////////////////////////////////////////
     
     /**
      * Note, both a repository and a transactional instance class in one! 
-     */                                                                     
+     */
     public static final class CryptoTransactionalRepository implements $SessionManagerRepository, $TransactionalHibernate {
         @Override public SessionFactory sessionFactory() {
             return SESSION_FACTORY;
         }
     }
+    
+    /////////////////////////////////////////////////////////////////////
 }
 ```  
    
@@ -217,7 +223,7 @@ Now that you've seen it, glanced it, consumed it, as well as having glanced **[`
 
 ### Demonstration of the `Transactional` API 
 
-Link to **[`$TransactionalHibernate`](https://github.com/momomo/momomo.com.platform.db.transactional.Hibernate/tree/master/src/momomo/com/db/$TransactionalHibernate.java)**, **[`$SessionFactoryRepository`](https://github.com/momomo/momomo.com.platform.db.base.jpa.session/blob/master/src/momomo/com/db/sessionfactory/$SessionFactoryRepository.java)** and for the lazy here are the method signatures in **[`$Transactional`](https://github.com/momomo/momomo.com.platform.db.transactional/tree/master/src/momomo/com/db/$Transactional.java)**:
+Link to **[`$TransactionalHibernate`](https://github.com/momomo/momomo.com.platform.db.transactional.Hibernate/tree/master/src/momomo/com/db/$TransactionalHibernate.java)** and for the lazy, here are the method signatures in **[`$Transactional`](https://github.com/momomo/momomo.com.platform.db.transactional/tree/master/src/momomo/com/db/$Transactional.java)**:
 
 ![Transactional API signatures](https://github.com/momomo/momomo.com.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/signatures.transactional.2021.04.07.V1.jpg?raw=true)
 
@@ -738,7 +744,7 @@ public static void main(String[] args) {
 
 When we run this static void main we will eventually find the **following in our database**:  
 
-![Generated tables](https://github.com/momomo/momomo.com.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/database.tables.2021.04.03.V2.jpg?raw=true)                
+![Generated tables](https://github.com/momomo/momomo.com.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/database.tables.2021.04.09.spring.V1.jpg?raw=true)                
 
    * ***bitcoin table***  
    ![Bitcoin table](https://github.com/momomo/momomo.com.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/database.bitcoin.table.2021.04.05.V1.jpg?raw=true)        
