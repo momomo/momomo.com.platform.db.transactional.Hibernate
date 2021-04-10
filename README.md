@@ -215,7 +215,7 @@ Now that you've seen it, glanced it, consumed it, as well as having glanced **[`
 
 Link to **[`$TransactionalHibernate`](https://github.com/momomo/momomo.com.platform.db.transactional.Hibernate/tree/master/src/momomo/com/db/$TransactionalHibernate.java)** and for the lazy, here are the method signatures in **[`$Transactional`](https://github.com/momomo/momomo.com.platform.db.transactional/tree/master/src/momomo/com/db/$Transactional.java)**:
 
-![Transactional API signatures](https://github.com/momomo/momomo.com.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/signatures.transactional.2021.04.07.V1.jpg?raw=true)
+![Transactional API signatures](https://github.com/momomo/momomo.com.yz.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/signatures.transactional.2021.04.07.V1.jpg?raw=true)
 
 ### `Part 1` - **[`Bitcoin.java`](https://github.com/momomo/momomo.com.example.app.Crypto.based.on.hibernate.libraries/tree/master/src/momomo/com/example/app/entities/Bitcoin.java)** 
 
@@ -734,16 +734,16 @@ public static void main(String[] args) {
 
 When we run this static void main we will eventually find the **following in our database**:  
 
-![Generated tables](https://github.com/momomo/momomo.com.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/database.tables.2021.04.09.V2.hibernate.jpg?raw=true)                
+![Generated tables](https://github.com/momomo/momomo.com.yz.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/database.tables.2021.04.09.V2.hibernate.jpg?raw=true)                
 
    * ***bitcoin table***  
-   ![Bitcoin table](https://github.com/momomo/momomo.com.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/database.bitcoin.table.2021.04.05.V1.jpg?raw=true)        
+   ![Bitcoin table](https://github.com/momomo/momomo.com.yz.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/database.bitcoin.table.2021.04.05.V1.jpg?raw=true)        
    
    * ***polkadot table***  
-   ![Polkadot table](https://github.com/momomo/momomo.com.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/database.polkadot.table.2021.04.03.V2.jpg?raw=true)        
+   ![Polkadot table](https://github.com/momomo/momomo.com.yz.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/database.polkadot.table.2021.04.03.V2.jpg?raw=true)        
    
    * ***stellar table***  
-   ![Stellar table](https://github.com/momomo/momomo.com.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/database.stellar.table.2021.04.03.V2.jpg?raw=true)        
+   ![Stellar table](https://github.com/momomo/momomo.com.yz.github.statics/blob/master/momomo.com.example.app.Crypto/graphics/database.stellar.table.2021.04.03.V2.jpg?raw=true)        
 
 ### Contribute
 Send an email to `opensource{at}momomo.com` if you would like to contribute in any way, make changes or otherwise have thoughts and/or ideas on things to improve.
